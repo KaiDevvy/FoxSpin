@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "sourceMap": true,
+        "module": "ES6",
+        "moduleResolution": "bundler",
+        "outDir": "../assets/js",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictPropertyInitialization": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
