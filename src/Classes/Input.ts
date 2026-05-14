@@ -20,7 +20,11 @@ export class Input
 
         window.addEventListener("mousedown", (event) => {
             Input.mouseButtons.get(event.button)?.forEach((fn) => fn());
-        })
+        });
+
+        window.addEventListener("touchend", (event) => {
+            Input.mouseButtons.get(0)?.forEach((fn) => fn());
+        });
     }
 
 
