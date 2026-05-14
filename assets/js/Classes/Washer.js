@@ -9,10 +9,13 @@ export class Washer extends Entity {
         super();
         this.backsprite = new Sprite(this, "assets/images/washer_back.png");
         this.frontsprite = new Sprite(this, "assets/images/washer_front.png");
-        this.transform.scale = new Vector2(0.5, 0.5);
         this.backsprite.pivot = this.frontsprite.pivot = new Vector2(550 / 2, 750 / 2);
         this.transform.position = Window.instance.camera.center;
         this.spinner = Scene.current.find(Spinner);
+    }
+    On_Rescale(viewportWidth, viewportHeight, factor) {
+        this.transform.position = Window.instance.camera.center;
+        this.transform.scale = new Vector2(1.0 * factor, 1.0 * factor);
     }
     update() {
         let factor = Math.random() * 2 - 1;

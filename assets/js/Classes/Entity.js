@@ -3,6 +3,8 @@ export class Entity {
     constructor() {
         this.transform = new Transform();
     }
+    On_Rescale(viewportWidth, viewportHeight, factor) {
+    }
     update() {
     }
 }

@@ -34,9 +34,9 @@ export class Window
         this.ctx = context;
 
         window.addEventListener("resize", () => this.reloadScale());
-        this.reloadScale();
         this.camera = new Camera();
         this.scene = new Scene();
+        this.reloadScale();
     }
 
     public update()
@@ -52,6 +52,9 @@ export class Window
         this.width = this.canvas.width;
         this.height = this.canvas.height;
         this.center = new Vector2(this.width / 2, this.height / 2);
+
+        let factor = Math.min(this.width / 1920, this.height / 1080);
+        this.scene?.On_Rescale(this.canvas.width, this.canvas.height, factor);
     }
 
 }

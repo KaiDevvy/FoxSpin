@@ -19,13 +19,17 @@ export class Spinner extends Entity
         super();
 
         this.sprite = new Sprite(this, "assets/images/spinner.png");
-        this.transform.position = Window.instance.camera.center;
         this.sprite.pivot = new Vector2(512, 512);
-        this.transform.scale = new Vector2(0.2, 0.2);
-
+        
         Input.onMouseButton(0, () => {
             this.velocity += 400;
         });
+    }
+    
+    public On_Rescale(viewportWidth: number, viewportHeight: number, factor: number)
+    {
+        this.transform.position = Window.instance.camera.center;
+        this.transform.scale = new Vector2(0.5 * factor, 0.5 * factor);
     }
 
     public update()

@@ -12,12 +12,14 @@ export class Spinner extends Entity {
         this.pulseFactor = 0;
         this.spins = 0;
         this.sprite = new Sprite(this, "assets/images/spinner.png");
-        this.transform.position = Window.instance.camera.center;
         this.sprite.pivot = new Vector2(512, 512);
-        this.transform.scale = new Vector2(0.2, 0.2);
         Input.onMouseButton(0, () => {
             this.velocity += 400;
         });
+    }
+    On_Rescale(viewportWidth, viewportHeight, factor) {
+        this.transform.position = Window.instance.camera.center;
+        this.transform.scale = new Vector2(0.5 * factor, 0.5 * factor);
     }
     update() {
         this.velocity *= 0.98; // Damping

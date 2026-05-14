@@ -12,11 +12,16 @@ export class Counter extends Entity
     {
         super();
         this.display = new Text(this, "0");
-        this.transform.position = new Vector2(Window.instance.width / 2, 50);
     }
 
     public update()
     {
         this.display.content = GameData.spins.toString();
+    }
+
+    public On_Rescale(viewportWidth: number, viewportHeight: number, factor: number)
+    {
+        this.transform.position = new Vector2(viewportWidth / 2, viewportHeight * 0.1);
+        this.display.fontSize = 80 * factor;
     }
 }

@@ -17,5 +17,10 @@ export class Scene {
             entity.update();
         }
     }
+    On_Rescale(viewportWidth, viewportHeight, factor) {
+        for (const entity of this.entities) {
+            entity.On_Rescale(viewportWidth, viewportHeight, factor);
+        }
+    }
 }
 //# sourceMappingURL=Scene.js.map

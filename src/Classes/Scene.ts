@@ -27,4 +27,11 @@ export class Scene
             entity.update();
         }
     }
+
+    On_Rescale(viewportWidth: number, viewportHeight: number, factor: number)
+    {
+        for (const entity of this.entities) {
+            entity.On_Rescale(viewportWidth, viewportHeight, factor);
+        }
+    }
 }
