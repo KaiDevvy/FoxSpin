@@ -1,8 +1,11 @@
 export class AudioEngine {
     initialize() {
-        // Read the assets/sounds/ dir and load all .ogg files into sfxMap
     }
     constructor() {
+        this.FILE_MAP = {
+            "angi": "assets/sounds/angi.ogg",
+            "click": "assets/sounds/click.ogg"
+        };
         this.sfxMap = new Map();
         this.audioContext = new AudioContext();
     }

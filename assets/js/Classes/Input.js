@@ -14,6 +14,10 @@ export class Input {
             var _a;
             (_a = Input.mouseButtons.get(event.button)) === null || _a === void 0 ? void 0 : _a.forEach((fn) => fn());
         });
+        window.addEventListener("touchend", (event) => {
+            var _a;
+            (_a = Input.mouseButtons.get(0)) === null || _a === void 0 ? void 0 : _a.forEach((fn) => fn());
+        });
     }
     static onMouseButton(button, callback) {
         var _a;
