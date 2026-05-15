@@ -1,3 +1,4 @@
+import { AudioEngine } from "./AudioEngine.js";
 import { Entity } from "./Entity.js";
 import { GameData } from "./GameData.js";
 import { Input } from "./Input.js";
@@ -10,11 +11,10 @@ export class Spinner extends Entity {
         this.velocity = 0;
         this.rotation = 0;
         this.pulseFactor = 0;
-        this.spins = 0;
         this.sprite = new Sprite(this, "assets/images/spinner.png");
         this.sprite.pivot = new Vector2(512, 512);
         Input.onMouseButton(0, () => {
-            this.velocity += 400;
+            this.velocity += GameData.spinForce;
         });
     }
     On_Rescale(viewportWidth, viewportHeight, factor) {
@@ -22,11 +22,14 @@ export class Spinner extends Entity {
         this.transform.scale = new Vector2(0.5 * factor, 0.5 * factor);
     }
     update() {
-        this.velocity *= 0.98; // Damping
-        this.rotation -= this.velocity * 0.01;
+        this.velocity *= GameData.friction; // Damping
+        this.rotation -= this.velocity;
         if (this.rotation < 0) {
             this.rotation += 360;
             this.pulseFactor = 1.0;
+            if (Math.random() < 0.01) {
+                AudioEngine.playOneshot("angi");
+            }
             GameData.spins++;
         }
         this.transform.rotation = this.rotation;

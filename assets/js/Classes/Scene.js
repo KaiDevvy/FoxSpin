@@ -1,9 +1,11 @@
+import { AudioEngine } from "./AudioEngine.js";
 import { Counter } from "./Counter.js";
 import { Spinner } from "./Spinner.js";
 import { Washer } from "./Washer.js";
 export class Scene {
     constructor() {
         this.entities = [];
+        this.waitingForAudio = true;
         Scene.current = this;
         this.entities.push(new Spinner());
         this.entities.push(new Counter());
@@ -13,6 +15,12 @@ export class Scene {
         return this.entities.find((e) => e instanceof type) || null;
     }
     update() {
+        if (this.waitingForAudio && AudioEngine.isReady) {
+            for (const entity of this.entities) {
+                entity.On_AudioReady();
+            }
+            this.waitingForAudio = false;
+        }
         for (const entity of this.entities) {
             entity.update();
         }

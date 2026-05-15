@@ -1,3 +1,4 @@
+import { AudioEngine } from "./AudioEngine.js";
 import { Counter } from "./Counter.js";
 import { Entity } from "./Entity.js";
 import { Spinner } from "./Spinner.js";
@@ -7,6 +8,7 @@ export class Scene
 {
     public static current: Scene;
     private entities: Entity[] = [];
+    private waitingForAudio: boolean = true;
 
     constructor()
     {
@@ -23,6 +25,14 @@ export class Scene
 
     update()
     {
+        if (this.waitingForAudio && AudioEngine.isReady)
+        {
+            for (const entity of this.entities) {
+                entity.On_AudioReady();
+            }
+            this.waitingForAudio = false;
+        }
+
         for (const entity of this.entities) {
             entity.update();
         }
