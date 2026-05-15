@@ -3,9 +3,9 @@ import { Entity } from "./Entity.js";
 import { GameData } from "./GameData.js";
 import { Input } from "./Input.js";
 import { Sprite } from "./Sprite.js";
-import { Text } from "./Text.js";
 import { Vector2 } from "./Vector2.js";
 import { Window } from "./Window.js";
+import { ClickArea } from "./ClickArea.js"
 
 export class Spinner extends Entity
 {
@@ -13,23 +13,28 @@ export class Spinner extends Entity
     public velocity: number = 0;
     private rotation: number = 0;
     private pulseFactor: number = 0;
+    private clickArea: ClickArea;
 
     constructor()
     {
         super();
 
+        this.clickArea = new ClickArea();
+        this.clickArea.width = 512;
+        this.clickArea.height = 512;
+        this.clickArea.onClick = () => {
+            this.velocity += GameData.spinForce;
+        }
+        
         this.sprite = new Sprite(this, "assets/images/spinner.png");
         this.sprite.pivot = new Vector2(512, 512);
-        
-        Input.onMouseButton(0, () => {
-            this.velocity += GameData.spinForce;
-        });
     }
     
     public On_Rescale(viewportWidth: number, viewportHeight: number, factor: number)
     {
         this.transform.position = Window.instance.camera.center;
         this.transform.scale = new Vector2(0.5 * factor, 0.5 * factor);
+        this.clickArea.transform.position = this.transform.position;
     }
 
     public update()

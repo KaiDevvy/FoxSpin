@@ -1,25 +1,29 @@
 import { AudioEngine } from "./AudioEngine.js";
 import { Entity } from "./Entity.js";
 import { GameData } from "./GameData.js";
-import { Input } from "./Input.js";
 import { Sprite } from "./Sprite.js";
 import { Vector2 } from "./Vector2.js";
 import { Window } from "./Window.js";
+import { ClickArea } from "./ClickArea.js";
 export class Spinner extends Entity {
     constructor() {
         super();
         this.velocity = 0;
         this.rotation = 0;
         this.pulseFactor = 0;
+        this.clickArea = new ClickArea();
+        this.clickArea.width = 512;
+        this.clickArea.height = 512;
+        this.clickArea.onClick = () => {
+            this.velocity += GameData.spinForce;
+        };
         this.sprite = new Sprite(this, "assets/images/spinner.png");
         this.sprite.pivot = new Vector2(512, 512);
-        Input.onMouseButton(0, () => {
-            this.velocity += GameData.spinForce;
-        });
     }
     On_Rescale(viewportWidth, viewportHeight, factor) {
         this.transform.position = Window.instance.camera.center;
         this.transform.scale = new Vector2(0.5 * factor, 0.5 * factor);
+        this.clickArea.transform.position = this.transform.position;
     }
     update() {
         this.velocity *= GameData.friction; // Damping

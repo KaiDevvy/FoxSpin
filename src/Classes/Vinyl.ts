@@ -24,7 +24,7 @@ export class Vinyl extends Entity
         this.backsprite.pivot = this.frontsprite.pivot = new Vector2(213, 209);
         this.transform.position = Window.instance.camera.center;
 
-        this.spinner = Scene.current.find(Spinner) as Spinner;
+        this.spinner = Scene.current.get("spinner") as Spinner;
     }
     
     On_AudioReady()

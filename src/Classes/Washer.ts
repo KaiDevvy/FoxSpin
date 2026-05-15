@@ -22,7 +22,7 @@ export class Washer extends Entity
         this.backsprite.pivot = this.frontsprite.pivot = new Vector2(550/2, 750/2);
         this.transform.position = Window.instance.camera.center;
 
-        this.spinner = Scene.current.find(Spinner) as Spinner;
+        this.spinner = Scene.current.get("spinner") as Spinner;
     }
     
     On_AudioReady()
