@@ -65,7 +65,8 @@ export class AudioEngine {
 AudioEngine.FILE_MAP = {
     "angi": "assets/sounds/angi.ogg",
     "click": "assets/sounds/click.ogg",
-    "washer": "assets/sounds/washer_loop.ogg"
+    "washer": "assets/sounds/washer_loop.ogg",
+    "vinyl": "assets/sounds/vinyl.ogg",
 };
 AudioEngine.sfxMap = new Map();
 AudioEngine.ready = false;

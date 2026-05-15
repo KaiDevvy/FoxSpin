@@ -1,7 +1,7 @@
 import { AudioEngine } from "./AudioEngine.js";
 import { Counter } from "./Counter.js";
 import { Spinner } from "./Spinner.js";
-import { Washer } from "./Washer.js";
+import { Vinyl } from "./Vinyl.js";
 export class Scene {
     constructor() {
         this.entities = [];
@@ -9,7 +9,7 @@ export class Scene {
         Scene.current = this;
         this.entities.push(new Spinner());
         this.entities.push(new Counter());
-        this.entities.push(new Washer());
+        this.entities.push(new Vinyl());
     }
     find(type) {
         return this.entities.find((e) => e instanceof type) || null;

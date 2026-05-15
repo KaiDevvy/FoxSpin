@@ -5,6 +5,7 @@ import { Vector2 } from "./Vector2.js";
 export class Drawable
 {
     public static all: Drawable[] = [];
+    public depth: number = 0;
     public enabled: boolean = true;
     public owner: Entity | null = null;
     public pivot: Vector2;

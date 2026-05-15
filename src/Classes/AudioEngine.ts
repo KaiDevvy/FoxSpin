@@ -4,7 +4,8 @@ export class AudioEngine
     private static FILE_MAP: { [key: string]: string } = {
         "angi": "assets/sounds/angi.ogg",
         "click": "assets/sounds/click.ogg",
-        "washer": "assets/sounds/washer_loop.ogg"
+        "washer": "assets/sounds/washer_loop.ogg",
+        "vinyl": "assets/sounds/vinyl.ogg",
     }
     private static audioContext: AudioContext;
     private static sfxMap: Map<string, AudioBuffer> = new Map();

@@ -8,7 +8,7 @@ export class Renderer
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         
         
-        for (const target of Drawable.all) {
+        for (const target of Drawable.all.sort((a, b) => a.depth - b.depth)) {
             target.render(ctx);
         }
         

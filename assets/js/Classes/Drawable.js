@@ -1,6 +1,7 @@
 import { Vector2 } from "./Vector2.js";
 export class Drawable {
     constructor(owner = null, pivot = Vector2.zero()) {
+        this.depth = 0;
         this.enabled = true;
         this.owner = null;
         this.pivot = pivot;
