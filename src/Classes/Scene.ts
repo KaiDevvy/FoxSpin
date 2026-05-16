@@ -23,7 +23,7 @@ export class Scene
         Scene.current = this;
         this.entities.set("spinner", new Spinner());
         this.entities.set("counter", new Counter());
-        this.entities.set("washer", new Washer());
+        this.entities.set("spintype", new Washer());
         this.entities.set("swapTest", new SwapTest());
     }
 
